@@ -1,0 +1,82 @@
+@prefix ex: <http://moncatalogue.com/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+ex:ISTEX_Publication_2023 rdf:type frbr:Work;
+    rdfs:label "Publications ISTEX 2023" ;
+    rdfs:comment "Les publications sur l'ISTEX en 2023." ;
+    dc:title "Le corpus « Machine Translation » : une exploration diachronique des (méta)données Istex" ;
+    dc:subject "Analyse de documents scientifiques, Visualisation des connaissances scientifiques" ;
+    dcterms:abstract "Le corpus Machine Translation se compose de publications scientifiques issues du réservoir Istex. Conçu comme un cas d'usage, il permet d'explorer l'histoire de la traduction automatique au travers des métadonnées et des textes intégraux disponibles pour chacun de ses documents." ;
+    dcterms:issued "2023-06-20"^^xsd:date ;
+    ex:has_expression ex:Atelier_Analyse_Textes_Scientifiques;
+    skos:related ex:ISTEX_Publication_2024;
+    ex:support ex:Corpus;
+    ex:utilise ex:Outil_ISTEX.
+
+# Définition de l'expression (atelier)
+ex:Atelier_Analyse_Textes_Scientifiques rdf:type frbr:Expression ;
+    rdfs:label "Atelier sur l’Analyse et la Recherche de Textes Scientifiques" ;
+    dcterms:creator "Florian Boudin, Béatrice Daille, Richard Dufour, Oumaima El Khettari, Maël Houbre, Léane Jourdan, Nihel Kooli" ;
+    dcterms:date "2023-06-09/2023-06-09"^^xsd:date ;
+    dcterms:description "Un atelier pour discuter de l'analyse des textes scientifiques, en lien avec les publications du corpus Machine Translation.".
+
+
+ex:ISTEX_Publication_2024 rdf:type frbr:Work;
+    rdfs:label "ISTEX_Publication_2024";
+    rdfs:comment "Les publicationS sur l'ISTEX en 2024.";
+    dc:title "La constitution et l’exploration d’un corpus documentaire à partir des ressources Istex";
+    dcterms:issued "2024-03-10"^^xsd:date;
+    ex:has_expression ex:CORPUS_fouille_Texte;
+    ex:support ex:Corpus; ex:"Machine_Translation", "Mémoire_Neuroscience", "Paleoclimatologie";
+    ex:utilise ex:outil_ISTEX.
+
+# Detail Corpus Fouille de texte
+ex:CORPUS_fouille_Texte rdf:type frbr:Expression;
+    rdfs:label "Vers un corpus optimal pour la fouille de textes : stratégie de constitution de corpus spécialisés à partir d’ISTEX";
+    dc:creator "Camille de Salaber,  Sabine Barreaux";
+    dcterms:date "2020-06-08/2020-06-09"^^xsd:date;
+    dcterms:description "Tirer parti de l'outil ISTEX pour la constitution d'un corpus homogène de publication scientiphique.".
+
+# Détail Corpus
+ex:Corpus rdf:type frbr:Manifestation.
+    ex:Corpus skos:broader ex:Machine_Translation,ex:Memoire_Neuroscience,ex:Paleoclimatologie .
+
+  ex:Machine_Translation rdf:type frbr:Manifestation;
+    dc:title "Machine Translation";
+    dc:creator "Inist-CNRS";
+    dc:contributors "Barreaux, Sabine (collecte de données) Delorme, Manon (terminologie du domaine) Huguin, Mathilde (collecte de données) Khayari, Majid (terminologie du domaine)";
+    dcterms:language "français", "anglais";
+    dcterms:subject "Traduction automatique";
+    rdfs:label "Retracer l’aspect diachronique de la traduction automatique et l'évolution des méthodes et des outils.";
+    dc:date "2023-03-15"^^xsd:date;
+    dc:date "2023-05-05"^^xsd:date;
+    ex:utilise ex:Outil_ISTEX.
+
+ex:Memoire_Neuroscience rdf:type frbr:Manifestation;
+    dc:title "Memoire Neuroscience";
+    skos:altLabel "Psychologie et neurosciences de la mémoire";
+    dc:creator "Inist-CNRS";
+    dcterms:language "français", "allemand";
+    dc:contributors "Arnould, Frank (terminologie du domaine), Morale, Enza (collecte de données), Schneider, Stéphane (fouille de texte)";
+    rdfs:label "Indexer le corpus avec le Thésaurus Psychologie cognitive de la mémoire humaine.";
+    rdfs:altLabel "Corpus de spécialité";
+    ex:utilise ex:Outil_ISTEX.
+
+  ex:Paleoclimatologie rdf:type frbr:Manifestation;
+    dc:title "Collection Paléoclimatologie";
+    dc:creator "Inist-CNRS";
+    ex:utilise ex:Outil_ISTEX.
+
+    ex:Outil_ISTEX rdf:type frbr:Objet;
+    dc:title "Istex";
+    dc:creator "Inist-CNRS";
+    rdfs:label "Le socle de la bibliothèque scientifique numérique nationale";
+    ex:usedby ex:RelTex, ex:Thésaurus_Paleoclimatologie.
